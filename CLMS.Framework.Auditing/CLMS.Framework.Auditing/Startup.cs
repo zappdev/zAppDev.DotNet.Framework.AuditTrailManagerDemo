@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NHibernate;
 
 namespace CLMS.Framework.Auditing
 {
@@ -23,6 +24,13 @@ namespace CLMS.Framework.Auditing
         {
             var factory = DBSessionManager.CreateSessionFactory();
             services.AddSingleton(provider => factory);
+            services.AddScoped((provider) =>
+            {
+                var factoryLocal = provider.GetService<ISessionFactory>();
+                var session = factoryLocal.OpenSession();
+                session.FlushMode = FlushMode.Manual;
+                return session;
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
