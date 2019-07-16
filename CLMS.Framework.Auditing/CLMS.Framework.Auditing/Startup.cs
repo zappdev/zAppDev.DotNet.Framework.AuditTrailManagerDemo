@@ -1,3 +1,4 @@
+using CLMS.Framework.Auditing.DAL;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -20,6 +21,9 @@ namespace CLMS.Framework.Auditing
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            var factory = DBSessionManager.CreateSessionFactory();
+            services.AddSingleton(provider => factory);
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             // In production, the Angular files will be served from this directory
@@ -67,5 +71,22 @@ namespace CLMS.Framework.Auditing
                 }
             });
         }
+
+      /*  public static void AddHibernate(this IServiceCollection services, IConfiguration configuration)
+        {
+            // Singleton objects are the same for every object and every request.
+            var factory = DBSessionManager.CreateSessionFactory(connectionSource, driverType);
+            services.AddSingleton(provider => factory);
+            // Scoped objects are the same within a request, but different across different requests.
+            services.AddScoped((provider) =>
+            {
+                var factoryLocal = provider.GetService<ISessionFactory>();
+                var session = factoryLocal.OpenSession();
+                session.FlushMode = FlushMode.Manual;
+                return session;
+            });
+            services.AddScoped<IMiniSessionService, MiniSessionService>();
+            services.AddScoped<IRepository, Repository>();
+        }*/
     }
 }
