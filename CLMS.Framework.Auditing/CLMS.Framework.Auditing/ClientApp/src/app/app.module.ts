@@ -6,9 +6,14 @@ import { RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
-import { PlayerComponent } from './Components/player/player.component';
-import { TeamComponent } from './Components/team/team.component';
-import { MatFormFieldModule, MatListModule, MatTableModule } from '@angular/material';
+import { PlayerComponent } from './Components/Players/player/player.component';
+import { PlayerAddComponent } from './Components/Players/player-add/player-add.component';
+import { PlayerEditComponent } from './Components/Players/player-edit/player-edit.component';
+import { TeamComponent } from './Components/Teams/team/team.component';
+import { TeamAddComponent } from './Components/Teams/team-add/team-add.component';
+import { TeamEditComponent } from './Components/Teams/team-edit/team-edit.component';
+import { MatNativeDateModule, MatFormFieldModule, MatListModule, MatTableModule, MatButtonModule, MatDatepickerModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -16,7 +21,11 @@ import { MatFormFieldModule, MatListModule, MatTableModule } from '@angular/mate
     NavMenuComponent,
     HomeComponent,
     PlayerComponent,
-    TeamComponent
+    PlayerAddComponent,
+    PlayerEditComponent,
+    TeamComponent,
+    TeamAddComponent,
+    TeamEditComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -25,10 +34,18 @@ import { MatFormFieldModule, MatListModule, MatTableModule } from '@angular/mate
     MatFormFieldModule,
     MatListModule,
     MatTableModule,
+    MatButtonModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: PlayerComponent, pathMatch: 'full' },
       { path: 'players', component: PlayerComponent, pathMatch: 'full' },
+      { path: 'player-add', component: PlayerAddComponent, pathMatch: 'full' },
+      { path: 'player-edit/:id', component: PlayerEditComponent, pathMatch: 'full' },
       { path: 'teams', component: TeamComponent, pathMatch: 'full' },
+      { path: 'team-add', component: TeamAddComponent, pathMatch: 'full' },
+      { path: 'team-edit/:id', component: TeamEditComponent, pathMatch: 'full' },
     ])
   ],
   providers: [],

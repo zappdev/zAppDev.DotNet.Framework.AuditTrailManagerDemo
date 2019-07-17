@@ -43,7 +43,7 @@ namespace CLMS.Framework.Auditing.Controllers
         }
 
         [HttpPut("{id}")]
-        public ActionResult PutPlayer(Player player)
+        public ActionResult PutPlayer(long id,Player player)
         {
             _session.Update(player);
             _session.Flush();
@@ -56,7 +56,7 @@ namespace CLMS.Framework.Auditing.Controllers
             _session.Save(player);
             _session.Flush();
 
-            return CreatedAtAction("Post Team", new { id = player.Id }, player);
+            return CreatedAtAction("PostPlayer", new { id = player.Id }, player);
         }
 
         [HttpDelete("{id}")]

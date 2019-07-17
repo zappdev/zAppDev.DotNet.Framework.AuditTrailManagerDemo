@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TeamService } from '../../Services/team.service';
-import { Team } from '../../Models/Team';
+import { Router } from '@angular/router';
+import { TeamService } from '../../../Services/team.service';
+import { Team } from '../../../Models/Team';
 
 @Component({
   selector: 'app-team',
@@ -11,9 +12,9 @@ export class TeamComponent implements OnInit {
 
   teams: Team[];
   dataSource: Team[];
-  displayedColumns = ['id', 'name', 'founded'];
+  displayedColumns = ['id', 'name', 'founded', 'actions'];
 
-  constructor(private _teamService: TeamService) { }
+  constructor(private _teamService: TeamService, private _router : Router) { }
 
   ngOnInit() {
     this._teamService.getTeams().pipe()
@@ -25,4 +26,14 @@ export class TeamComponent implements OnInit {
     );
   }
 
+  deleteTEam(team: Team) {
+  }
+
+  editTeam(row) {
+    this._router.navigate(['/team-edit', row.id]);
+  }
+
+  addTeam() {
+    this._router.navigate(['/team-add']);
+  }
 }
