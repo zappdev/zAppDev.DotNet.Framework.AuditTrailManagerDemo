@@ -3,6 +3,8 @@ import { Player } from '../../../Models/Player';
 import { Router, ActivatedRoute } from '@angular/router';
 import { PlayerServiceService } from '../../../Services/player.service';
 import { Location } from '@angular/common';
+import { Team } from '../../../Models/Team';
+import { TeamService } from '../../../Services/team.service';
 
 @Component({
   selector: 'app-player-edit',
@@ -12,8 +14,9 @@ import { Location } from '@angular/common';
 export class PlayerEditComponent implements OnInit {
 
   player: Player;
+  teams: Team[];
 
-  constructor(private _router: ActivatedRoute, private _playerService: PlayerServiceService, private _location: Location) { }
+  constructor(private _router: ActivatedRoute, private _playerService: PlayerServiceService, private _teamService: TeamService, private _location: Location) { }
 
   ngOnInit() {
     let id = this._router.snapshot.paramMap.get('id');
@@ -22,7 +25,12 @@ export class PlayerEditComponent implements OnInit {
         data => { this.player = data; },
         err => console.error(err),
         () => { console.log(this.player); }
-      );
+    );
+    this._teamService.getTeams().subscribe(
+      (data : any) => {
+        this.teams = data.body.value;
+      }
+    );
   }
 
   onSave() {
@@ -30,6 +38,10 @@ export class PlayerEditComponent implements OnInit {
       .subscribe(
         () => { this._location.back(); }
       );
+  }
+
+  trackTeam(x: Team, y: Team) {
+    return x.id == y.id;
   }
 
 }

@@ -15,22 +15,21 @@
     <div class="row">
       <label>
         Date of Birth:
-          <input matInput [matDatepicker]="picker" [(ngModel)]="player.dateOfBirth" placeholder="Choose a date">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
       </label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="player.dateOfBirth" placeholder="Choose a date">
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
     </div>
   </div>
-  <!--<div class="col-lg-6">
+  <div class="col-lg-6">
     <mat-form-field>
       <mat-select placeholder="Team" [(ngModel)]="selectedTeam" name="team">
         <mat-option *ngFor="let team of teams" [value]="team">
           {{team.name}}
         </mat-option>
       </mat-select>
-    </mat-form-field>
+     </mat-form-field>
   </div>
-      -->
 </div>
 <div class="row">
   <button (click)="onSave()">Save</button>

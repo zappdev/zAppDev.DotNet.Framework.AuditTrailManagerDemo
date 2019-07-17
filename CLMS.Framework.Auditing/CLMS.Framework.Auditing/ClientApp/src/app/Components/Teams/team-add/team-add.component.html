@@ -1,3 +1,19 @@
-<p>
-  team-add works!
-</p>
+<div class="row">
+  <div class="col-lg-6">
+    <div class="row">
+      <label>
+        First Name:
+        <input [(ngModel)]="team.name" placeholder="Name" />
+      </label>
+    </div>
+    <div class="row">
+      <label>
+        Founded:
+        <input matInput [(ngModel)]="team.founded" placeholder="Founded" />
+      </label>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <button (click)="onSave()">Save</button>
+</div>

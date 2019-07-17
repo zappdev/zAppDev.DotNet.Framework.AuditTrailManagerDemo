@@ -17,16 +17,25 @@ export class TeamComponent implements OnInit {
   constructor(private _teamService: TeamService, private _router : Router) { }
 
   ngOnInit() {
+    this.loadTeams();
+  }
+
+  loadTeams() {
     this._teamService.getTeams().pipe()
       .subscribe(
         (data: any) => {
           this.teams = data.body.value;
           this.dataSource = this.teams;
         }
-    );
+      );
   }
 
-  deleteTEam(team: Team) {
+  deleteTeam(team: Team) {
+    this._teamService.deleteTeam(team.id).subscribe(
+      () => {
+        this.loadTeams();
+      }
+    );
   }
 
   editTeam(row) {

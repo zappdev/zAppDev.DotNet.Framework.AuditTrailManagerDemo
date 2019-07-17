@@ -19,7 +19,7 @@ export class TeamService {
   constructor(private http: HttpClient) { }
 
   getTeams(): Observable<HttpResponse<Config>> {
-    return this.http.get<HttpResponse<Config>>('/api/team/list', { observe: 'response' });
+    return this.http.get<HttpResponse<Config>>('/api/teams/list', { observe: 'response' });
   }
 
   addTeam(team: Team): Observable<Team> {
@@ -33,7 +33,7 @@ export class TeamService {
   }
 
   editTeam(team: Team): Observable<{}> {
-    return this.http.put(`/api/players/${team.id}`, team, httpOptions)
+    return this.http.put(`/api/teams/${team.id}`, team, httpOptions)
       .pipe();
   }
 

@@ -10,10 +10,10 @@ namespace CLMS.Framework.Auditing.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TeamController : ControllerBase
+    public class TeamsController : ControllerBase
     {
         private ISession _session { get; set; }
-        public TeamController(ISession session)
+        public TeamsController(ISession session)
         {
             _session = session;
         }
@@ -55,7 +55,7 @@ namespace CLMS.Framework.Auditing.Controllers
             _session.Save(team);
             _session.Flush();
 
-            return CreatedAtAction("Post Team", new { id = team.Id}, team);
+            return CreatedAtAction("PostTeam", new { id = team.Id}, team);
         }
 
         [HttpDelete("{id}")]

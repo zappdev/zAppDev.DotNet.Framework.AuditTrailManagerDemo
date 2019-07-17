@@ -2,6 +2,8 @@ import { Component, OnInit, Injectable } from '@angular/core';
 import { Player } from '../../../Models/Player';
 import { PlayerServiceService } from '../../../Services/player.service';
 import { Location } from '@angular/common';
+import { Team } from '../../../Models/Team';
+import { TeamService } from '../../../Services/team.service';
 
 @Component({
   selector: 'app-player-add',
@@ -12,15 +14,23 @@ import { Location } from '@angular/common';
 
 export class PlayerAddComponent implements OnInit {
 
-  player: Player;
+  public teams: Team[];
+  public selectedTeam: Team;
+  public player: Player;
 
-  constructor(private _playerService: PlayerServiceService, private _location: Location) { }
+  constructor(private _playerService: PlayerServiceService, private _teamService: TeamService, private _location: Location) { }
 
   ngOnInit() {
     this.player = new Player();
+    this._teamService.getTeams().subscribe(
+      (data : any) => {
+        this.teams = data.body.value;
+      }
+    );
   }
 
   onSave() {
+    this.player.team = this.selectedTeam;
     this._playerService.addPlayer(this.player).subscribe(
       () => { this._location.back(); }
     );

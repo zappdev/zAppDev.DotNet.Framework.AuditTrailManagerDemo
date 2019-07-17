@@ -12,7 +12,7 @@ import { PlayerEditComponent } from './Components/Players/player-edit/player-edi
 import { TeamComponent } from './Components/Teams/team/team.component';
 import { TeamAddComponent } from './Components/Teams/team-add/team-add.component';
 import { TeamEditComponent } from './Components/Teams/team-edit/team-edit.component';
-import { MatNativeDateModule, MatFormFieldModule, MatListModule, MatTableModule, MatButtonModule, MatDatepickerModule } from '@angular/material';
+import { MatNativeDateModule, MatFormFieldModule, MatListModule, MatTableModule, MatButtonModule, MatDatepickerModule, MatSelectModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -37,6 +37,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatSelectModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: PlayerComponent, pathMatch: 'full' },

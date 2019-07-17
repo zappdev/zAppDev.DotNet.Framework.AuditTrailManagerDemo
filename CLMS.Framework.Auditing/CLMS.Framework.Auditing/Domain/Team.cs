@@ -7,7 +7,7 @@ namespace CLMS.Framework.Auditing.Domain
 {
     public class Team
     {
-        public virtual long Id { get; protected set; }
+        public virtual long Id { get; set; }
         public virtual string Name { get; set; }
         public virtual int Founded { get; set; }
         public virtual IList<Player> Players { get; protected set; }
