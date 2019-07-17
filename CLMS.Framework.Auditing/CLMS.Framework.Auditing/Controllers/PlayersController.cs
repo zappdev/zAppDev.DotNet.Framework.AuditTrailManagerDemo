@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using NHibernate;
 using Microsoft.AspNetCore.Mvc;
 using CLMS.Framework.Auditing.Domain;
+using CLMS.Framework.Auditing.DTOs;
 
 namespace CLMS.Framework.Auditing.Controllers
 {
@@ -22,7 +23,20 @@ namespace CLMS.Framework.Auditing.Controllers
         [HttpGet("list")]
         public async Task<IActionResult> GetPlayers()
         {
-            var results = _session.CreateCriteria<Player>().List<Player>();
+            var players = _session.CreateCriteria<Player>().List<Player>();
+            var results = new List<PlayerDTO>();
+            foreach (var player in players)
+            {
+                var dto = new PlayerDTO
+                {
+                    DateOfBirth = player.DateOfBirth,
+                    Id = player.Id,
+                    FirstName = player.FirstName,
+                    LastName = player.LastName,
+                    Team = player.Team.Name
+                };
+                results.Add(dto);
+            }
 
             return Ok(new
             {
@@ -38,6 +52,7 @@ namespace CLMS.Framework.Auditing.Controllers
             {
                 return NotFound();
             }
+            
 
             return player;
         }

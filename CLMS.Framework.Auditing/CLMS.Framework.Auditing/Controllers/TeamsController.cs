@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using NHibernate;
 using Microsoft.AspNetCore.Mvc;
 using CLMS.Framework.Auditing.Domain;
+using CLMS.Framework.Auditing.DTOs;
 
 namespace CLMS.Framework.Auditing.Controllers
 {
@@ -21,8 +22,18 @@ namespace CLMS.Framework.Auditing.Controllers
         [HttpGet("list")]
         public IActionResult GetTeams()
         {
-            var results = _session.CreateCriteria<Team>().List<Team>();
-
+            var teams = _session.CreateCriteria<Team>().List<Team>();
+            var results = new List<TeamDto>();
+            foreach(var team in teams)
+            {
+                var dto = new TeamDto
+                {
+                    Founded = team.Founded,
+                    Id = team.Id,
+                    Name = team.Name
+                };
+                results.Add(dto);
+            }
             return Ok(new
             {
                 value = results
@@ -30,15 +41,23 @@ namespace CLMS.Framework.Auditing.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<Team> GetTeam(long id)
+        public ActionResult<TeamDto> GetTeam(long id)
         {
             var team = _session.Get<Team>(id);
+            
             if(team == null)
             {
                 return NotFound();
             }
 
-            return team;
+            var teamDto = new TeamDto
+            {
+                Founded = team.Founded,
+                Name = team.Name,
+                Id = team.Id
+            };
+
+            return teamDto;
         }
 
         [HttpPut("{id}")]

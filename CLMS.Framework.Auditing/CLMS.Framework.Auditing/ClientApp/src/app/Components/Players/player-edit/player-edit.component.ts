@@ -41,7 +41,7 @@ export class PlayerEditComponent implements OnInit {
   }
 
   trackTeam(x: Team, y: Team) {
-    return x.id == y.id;
+    return x.name == y.name;
   }
 
 }
