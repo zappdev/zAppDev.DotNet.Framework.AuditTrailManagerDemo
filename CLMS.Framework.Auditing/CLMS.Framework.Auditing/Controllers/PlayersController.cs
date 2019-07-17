@@ -20,7 +20,7 @@ namespace CLMS.Framework.Auditing.Controllers
         }
 
         [HttpGet("list")]
-        public IActionResult GetPlayers()
+        public async Task<IActionResult> GetPlayers()
         {
             var results = _session.CreateCriteria<Player>().List<Player>();
 

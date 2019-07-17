@@ -14,12 +14,12 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class PlayerServiceService {
+export class TeamService {
 
   constructor(private http: HttpClient) { }
 
-  getTeams() {
-    return this.http.get<Team[]>('/api/teams/list');
+  getTeams(): Observable<HttpResponse<Config>> {
+    return this.http.get<HttpResponse<Config>>('/api/team/list', { observe: 'response' });
   }
 
   addTeam(team: Team): Observable<Team> {

@@ -18,8 +18,8 @@ export class PlayerServiceService {
 
   constructor(private http: HttpClient) { }
 
-  getPlayers() {
-    return this.http.get<Player[]>('/api/players/list');
+  getPlayers(): Observable<HttpResponse<Config>> {
+    return this.http.get<HttpResponse<Config>>('/api/players/list',{ observe: 'response' });
   }
 
   addPlayer(player: Player): Observable<Player> {
