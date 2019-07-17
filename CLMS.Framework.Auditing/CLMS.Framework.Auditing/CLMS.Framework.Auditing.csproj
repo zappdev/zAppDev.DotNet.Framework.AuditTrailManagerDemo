@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -16,6 +16,7 @@
     <PackageReference Include="FluentNHibernate" Version="2.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="2.10.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
     <PackageReference Include="NHibernate" Version="5.2.5" />
   </ItemGroup>
@@ -30,6 +31,10 @@
   <ItemGroup>
     <None Remove="ClientApp\src\app\Models\Player.ts" />
     <None Remove="ClientApp\src\app\Models\Team.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\CLMS.Framework\src\CLMS.Framework\CLMS.Framework.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -19,6 +19,7 @@ export class PlayerEditComponent implements OnInit {
   constructor(private _router: ActivatedRoute, private _playerService: PlayerServiceService, private _teamService: TeamService, private _location: Location) { }
 
   ngOnInit() {
+    this.getTeams();
     let id = this._router.snapshot.paramMap.get('id');
     this._playerService.getPlayer(id)
       .subscribe(
@@ -26,10 +27,15 @@ export class PlayerEditComponent implements OnInit {
         err => console.error(err),
         () => { console.log(this.player); }
     );
+  }
+
+  getTeams() {
     this._teamService.getTeams().subscribe(
-      (data : any) => {
+      (data: any) => {
         this.teams = data.body.value;
-      }
+      },
+      err => { console.log(err); },
+      () => { console.log('done loading teams'); }
     );
   }
 
@@ -41,7 +47,7 @@ export class PlayerEditComponent implements OnInit {
   }
 
   trackTeam(x: Team, y: Team) {
-    return x.name == y.name;
+    return x.id == y.id;
   }
 
 }

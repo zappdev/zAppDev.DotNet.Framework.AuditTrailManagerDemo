@@ -29,7 +29,7 @@ namespace CLMS.Framework.Auditing.DAL
                 .BuildSessionFactory();
         }
 
-        private static void UpdateDatabaseSchema(Configuration cfg)
+        private static void UpdateDatabaseSchema(NHibernate.Cfg.Configuration cfg)
         {
             var updateCode = new System.Text.StringBuilder();
             var schemaUpdate = new SchemaUpdate(cfg);
