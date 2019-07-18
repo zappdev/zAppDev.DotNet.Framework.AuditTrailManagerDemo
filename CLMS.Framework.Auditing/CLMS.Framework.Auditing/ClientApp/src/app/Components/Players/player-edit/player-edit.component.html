@@ -23,7 +23,7 @@
   </div>
   <div class="col-lg-6">
     <mat-form-field>
-      <mat-select placeholder="Team" [compareWith]="trackTeam" [(ngModel)]="player.Team" name="team">
+      <mat-select placeholder="Team" [compareWith]="trackTeam" [(ngModel)]="player.team" name="team">
         <mat-option *ngFor="let team of teams" [value]="team">
           {{team.name}}
         </mat-option>
