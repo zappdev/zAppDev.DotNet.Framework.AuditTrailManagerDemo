@@ -12,8 +12,9 @@ import { PlayerEditComponent } from './Components/Players/player-edit/player-edi
 import { TeamComponent } from './Components/Teams/team/team.component';
 import { TeamAddComponent } from './Components/Teams/team-add/team-add.component';
 import { TeamEditComponent } from './Components/Teams/team-edit/team-edit.component';
-import { MatNativeDateModule, MatFormFieldModule, MatListModule, MatTableModule, MatButtonModule, MatDatepickerModule, MatSelectModule } from '@angular/material';
+import { MatNativeDateModule, MatFormFieldModule, MatListModule, MatTableModule, MatButtonModule, MatDatepickerModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuditConfigurationComponent } from './Components/Audit/audit-configuration/audit-configuration.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PlayerEditComponent,
     TeamComponent,
     TeamAddComponent,
-    TeamEditComponent
+    TeamEditComponent,
+    AuditConfigurationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -38,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatCheckboxModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: PlayerComponent, pathMatch: 'full' },
@@ -47,6 +50,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
       { path: 'teams', component: TeamComponent, pathMatch: 'full' },
       { path: 'team-add', component: TeamAddComponent, pathMatch: 'full' },
       { path: 'team-edit/:id', component: TeamEditComponent, pathMatch: 'full' },
+      { path: 'audit-configuration', component: AuditConfigurationComponent, pathMatch: 'full' },
     ])
   ],
   providers: [],

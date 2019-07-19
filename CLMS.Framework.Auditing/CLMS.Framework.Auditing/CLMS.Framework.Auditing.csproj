@@ -29,6 +29,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\app\Models\AuditEntityConfiguration.ts" />
+    <None Remove="ClientApp\src\app\Models\Audit\AuditPropertyConfiguration.ts" />
     <None Remove="ClientApp\src\app\Models\Player.ts" />
     <None Remove="ClientApp\src\app\Models\Team.ts" />
   </ItemGroup>
@@ -38,8 +40,14 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\src\app\Models\Audit\AuditEntityConfiguration.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\Models\Audit\AuditPropertyConfiguration.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Models\Player.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Models\Team.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\Components\Audit\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
