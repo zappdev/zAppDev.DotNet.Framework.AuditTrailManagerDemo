@@ -1,6 +1,7 @@
 ﻿using CLMS.Framework.Data;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
+using Microsoft.Extensions.Configuration;
 using NHibernate;
 using NHibernate.Cfg;
 using NHibernate.Tool.hbm2ddl;
@@ -13,10 +14,8 @@ namespace CLMS.Framework.Auditing.DAL
 {
     public class DBSessionManager
     {
-        public static ISessionFactory CreateSessionFactory()
+        public static ISessionFactory CreateSessionFactory(string connectionString)
         {
-            var connectionString = "Server=192.168.2.201;Database=CLMS.Framework.Auditing;User ID=AppDev;Password=AppDev";
-
             return Fluently.Configure()
                 .Database(
                         MsSqlConfiguration.MsSql7.ConnectionString(connectionString)
