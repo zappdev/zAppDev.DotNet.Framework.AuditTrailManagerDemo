@@ -33,7 +33,7 @@ namespace CLMS.Framework.Auditing.Controllers
                     Id = player.Id,
                     FirstName = player.FirstName,
                     LastName = player.LastName,
-                    Team = player.Team.Name
+                    Team = player.Team?.Name
                 };
                 results.Add(dto);
             }

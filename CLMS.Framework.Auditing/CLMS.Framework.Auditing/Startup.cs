@@ -89,23 +89,6 @@ namespace CLMS.Framework.Auditing
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
-        }
-
-      /*  public static void AddHibernate(this IServiceCollection services, IConfiguration configuration)
-        {
-            // Singleton objects are the same for every object and every request.
-            var factory = DBSessionManager.CreateSessionFactory(connectionSource, driverType);
-            services.AddSingleton(provider => factory);
-            // Scoped objects are the same within a request, but different across different requests.
-            services.AddScoped((provider) =>
-            {
-                var factoryLocal = provider.GetService<ISessionFactory>();
-                var session = factoryLocal.OpenSession();
-                session.FlushMode = FlushMode.Manual;
-                return session;
-            });
-            services.AddScoped<IMiniSessionService, MiniSessionService>();
-            services.AddScoped<IRepository, Repository>();
-        }*/
+        }        
     }
 }

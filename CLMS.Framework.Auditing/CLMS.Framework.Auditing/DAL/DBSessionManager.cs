@@ -1,4 +1,5 @@
-﻿using FluentNHibernate.Cfg;
+﻿using CLMS.Framework.Data;
+using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
 using NHibernate;
 using NHibernate.Cfg;
@@ -14,23 +15,32 @@ namespace CLMS.Framework.Auditing.DAL
     {
         public static ISessionFactory CreateSessionFactory()
         {
+            var connectionString = "Server=192.168.2.201;Database=CLMS.Framework.Auditing;User ID=AppDev;Password=AppDev";
+
             return Fluently.Configure()
                 .Database(
-                        MsSqlConfiguration.MsSql7.ConnectionString("Server=KIRKI;Database=CLMS.Framework.Auditing;Trusted_Connection=True;MultipleActiveResultSets=true")
+                        MsSqlConfiguration.MsSql7.ConnectionString(connectionString)
                 )
-                .Mappings(m => 
-                        m.FluentMappings.AddFromAssemblyOf<DBSessionManager>()
-                 )
+                .Mappings(m =>
+                {
+                    m.HbmMappings.AddFromAssemblyOf<NHAuditTrailManager>();
+                    m.FluentMappings.AddFromAssemblyOf<DBSessionManager>();
+                })
                 .ExposeConfiguration(cfg =>
                 {
                     var up = new SchemaUpdate(cfg);
-                    UpdateDatabaseSchema(cfg);
+                    UpdateDatabaseSchema(cfg, connectionString);
                 })
                 .BuildSessionFactory();
         }
 
-        private static void UpdateDatabaseSchema(NHibernate.Cfg.Configuration cfg)
+        private static void UpdateDatabaseSchema(NHibernate.Cfg.Configuration cfg, string connectionString)
         {
+            MiniSessionManager.ExecuteScript(connectionString, @"
+                IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = N'wf') EXEC('CREATE SCHEMA wf AUTHORIZATION [dbo]');
+                IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = N'security') EXEC('CREATE SCHEMA security AUTHORIZATION [dbo]');
+				IF NOT EXISTS (SELECT * FROM sys.schemas WHERE name = N'audit') EXEC('CREATE SCHEMA audit AUTHORIZATION [dbo]');");
+
             var updateCode = new System.Text.StringBuilder();
             var schemaUpdate = new SchemaUpdate(cfg);
             schemaUpdate.Execute(row =>
