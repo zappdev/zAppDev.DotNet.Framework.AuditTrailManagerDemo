@@ -14,7 +14,7 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class PlayerServiceService {
+export class PlayerService {
 
   constructor(private http: HttpClient) { }
 

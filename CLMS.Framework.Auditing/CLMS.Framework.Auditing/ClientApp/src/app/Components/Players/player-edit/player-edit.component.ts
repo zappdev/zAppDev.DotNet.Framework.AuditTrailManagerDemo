@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../../../Models/Player';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PlayerServiceService } from '../../../Services/player.service';
+import { PlayerService } from '../../../Services/player.service';
 import { Location } from '@angular/common';
 import { Team } from '../../../Models/Team';
 import { TeamService } from '../../../Services/team.service';
@@ -16,7 +16,7 @@ export class PlayerEditComponent implements OnInit {
   player: Player;
   teams: Team[];
 
-  constructor(private _router: ActivatedRoute, private _playerService: PlayerServiceService, private _teamService: TeamService, private _location: Location) { }
+  constructor(private _router: ActivatedRoute, private _playerService: PlayerService, private _teamService: TeamService, private _location: Location) { }
 
   ngOnInit() {
     this.getTeams();

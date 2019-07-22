@@ -14,18 +14,7 @@ import { AuditPropertyConfiguration } from '../../../Models/Audit/AuditPropertyC
 
 export class AuditConfigurationComponent implements OnInit {
 
-  auditEntities: AuditEntityConfiguration[] = [
-    {
-      id: 1, fullName: 'Player', shortName: 'Player', properties: [
-        { id: 1, name: 'firstName', dataType: 'sting', isAuditable: false, isCollection: false, isComplex: false, entity: null }
-      ]
-    },
-    {
-      id: 2, fullName: 'Team', shortName: 'Team', properties: [
-        { id: 2, name: 'name', dataType: 'sting', isAuditable: false, isCollection: false, isComplex: false, entity: null }
-      ]
-    },
-  ];
+  auditEntities: AuditEntityConfiguration[] = [];
 
   dataSourceAuditEntities = new MatTableDataSource<AuditEntityConfiguration>();
   dataSourceAuditProperties = new MatTableDataSource<AuditPropertyConfiguration>();
@@ -42,7 +31,6 @@ export class AuditConfigurationComponent implements OnInit {
          this.dataSourceAuditEntities.data = this.auditEntities;
        }
      );
-    //this.dataSourceAuditEntities.data = this.auditEntities;
   }
 
   /** Whether the number of selected elements matches the total number of rows. */

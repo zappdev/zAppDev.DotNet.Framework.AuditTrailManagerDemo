@@ -1,6 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Router} from '@angular/router';
-import { PlayerServiceService } from '../../../Services/player.service';
+import { PlayerService } from '../../../Services/player.service';
 import { Player } from '../../../Models/Player';
 
 @Component({
@@ -15,7 +15,7 @@ export class PlayerComponent implements OnInit {
   players: Player[];
   displayedColumns = ['id', 'firstName', 'lastName', 'dateOfBirth', 'actions'];
   dataSource: Player[];
-  constructor(private _playerService: PlayerServiceService, private _router: Router ) { }
+  constructor(private _playerService: PlayerService, private _router: Router ) { }
 
   ngOnInit() {
     this.loadPlayers();

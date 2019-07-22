@@ -1,6 +1,6 @@
 import { Component, OnInit, Injectable } from '@angular/core';
 import { Player } from '../../../Models/Player';
-import { PlayerServiceService } from '../../../Services/player.service';
+import { PlayerService } from '../../../Services/player.service';
 import { Location } from '@angular/common';
 import { Team } from '../../../Models/Team';
 import { TeamService } from '../../../Services/team.service';
@@ -18,7 +18,7 @@ export class PlayerAddComponent implements OnInit {
   public selectedTeam: Team;
   public player: Player;
 
-  constructor(private _playerService: PlayerServiceService, private _teamService: TeamService, private _location: Location) { }
+  constructor(private _playerService: PlayerService, private _teamService: TeamService, private _location: Location) { }
 
   ngOnInit() {
     this.player = new Player();
