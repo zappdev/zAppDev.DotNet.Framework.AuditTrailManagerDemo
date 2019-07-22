@@ -1,11 +1,12 @@
-﻿using System;
+﻿using CLMS.Framework.Auditing.DAL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace CLMS.Framework.Auditing.Domain
 {
-    public class Team
+    public class Team: IAuditable
     {
         public virtual long Id { get; set; }
         public virtual string Name { get; set; }

@@ -1,4 +1,5 @@
 using CLMS.Framework.Auditing.DAL;
+using CLMS.Framework.Data.DAL;
 using CLMS.Framework.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using NHibernate;
+using System.Linq;
 
 namespace CLMS.Framework.Auditing
 {
@@ -26,14 +28,16 @@ namespace CLMS.Framework.Auditing
         public void ConfigureServices(IServiceCollection services)
         {
             var factory = DBSessionManager.CreateSessionFactory(Configuration.GetConnectionString("DefaultConnection"));
-            services.AddSingleton(provider => factory);
-            services.AddScoped((provider) =>
+            services.AddSingleton<ISessionFactory>(provider => factory);
+            services.AddScoped<ISession>((provider) =>
             {
-                var factoryLocal = provider.GetService<ISessionFactory>();
-                var session = factoryLocal.OpenSession();
+                var sessionFactory = provider.GetService<ISessionFactory>();
+                var session = sessionFactory.OpenSession();
                 session.FlushMode = FlushMode.Manual;
                 return session;
             });
+            services.AddSingleton<IRepositoryBuilder, DAL.RepositoryBuilder>();
+            services.AddSingleton<INHAuditTrailManager, NHAuditTrailManager>();
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
@@ -88,6 +92,19 @@ namespace CLMS.Framework.Auditing
                 {
                     spa.UseAngularCliServer(npmScript: "start");
                 }
+            });
+
+            ServiceLocator.SetLocatorProvider(app.ApplicationServices);
+
+            var manager = app.ApplicationServices.GetService(typeof(INHAuditTrailManager)) as INHAuditTrailManager;
+            var type = typeof(DBSessionManager);
+            var auditableTypes = type.Assembly
+                .GetTypes()
+                .Where(t => t.GetInterfaces().Contains(typeof(IAuditable)))
+                .ToList();
+            manager.Enable(auditableTypes, () => new AuditContext
+            {
+                Username = "Public User"
             });
         }        
     }
