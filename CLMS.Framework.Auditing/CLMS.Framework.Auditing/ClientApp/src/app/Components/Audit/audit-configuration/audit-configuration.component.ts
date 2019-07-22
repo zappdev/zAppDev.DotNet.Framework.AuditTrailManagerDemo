@@ -14,7 +14,19 @@ import { AuditPropertyConfiguration } from '../../../Models/Audit/AuditPropertyC
 
 export class AuditConfigurationComponent implements OnInit {
 
-  auditEntities: AuditEntityConfiguration[] = [];
+  auditEntities: AuditEntityConfiguration[] = [
+    {
+      id: 1, fullName: 'Player', shortName: 'Player', properties: [
+        { id: 1, name: 'firstName', dataType: 'sting', isAuditable: false, isCollection: false, isComplex: false, entity: null }
+      ]
+    },
+    {
+      id: 2, fullName: 'Team', shortName: 'Team', properties: [
+        { id: 2, name: 'name', dataType: 'sting', isAuditable: false, isCollection: false, isComplex: false, entity: null }
+      ]
+    },
+  ];
+  
   dataSourceAuditEntities = new MatTableDataSource<AuditEntityConfiguration>();
   dataSourceAuditProperties = new MatTableDataSource<AuditPropertyConfiguration>();
   selection = new SelectionModel<AuditEntityConfiguration>(true, []);
@@ -24,12 +36,13 @@ export class AuditConfigurationComponent implements OnInit {
   constructor(private _auditConfigurationService: AuditConfigService) { }
 
   ngOnInit() {
-    this._auditConfigurationService.getAuditEntityConfigurations().subscribe(
+   /* this._auditConfigurationService.getAuditEntityConfigurations().subscribe(
       (data: any) => {
         this.auditEntities = data.body.value;
         this.dataSourceAuditEntities.data = this.auditEntities;
       }
-    );
+    );*/
+    this.dataSourceAuditEntities.data = this.auditEntities;
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -53,4 +66,5 @@ export class AuditConfigurationComponent implements OnInit {
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id.toString() + 1}`;
   }
+
 }
