@@ -6,14 +6,16 @@
       <!-- Checkbox Column -->
       <ng-container matColumnDef="select">
         <mat-header-cell *matHeaderCellDef>
-          <mat-checkbox (change)="$event ? masterToggle() : null"
+          <mat-checkbox class = "tp-margin"
+                        (change)="$event ? masterToggle() : null"
                         [checked]="selection.hasValue() && isAllSelected()"
                         [indeterminate]="selection.hasValue() && !isAllSelected()"
                         [aria-label]="checkboxLabel()">
           </mat-checkbox>
         </mat-header-cell>
         <mat-cell *matCellDef="let row">
-          <mat-checkbox (click)="$event.stopPropagation()"
+          <mat-checkbox class = "tp-margin"
+                        (click)="$event.stopPropagation()"
                         (change)="$event ? onSelect(row) : null"
                         [checked]="selection.isSelected(row)"
                         [aria-label]="checkboxLabel(row)">
@@ -23,17 +25,17 @@
 
       <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-        <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.id}} </mat-cell>
+        <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.Id}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="fullName">
         <mat-header-cell *matHeaderCellDef> Full Name </mat-header-cell>
-        <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.fullName}} </mat-cell>
+        <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.FullName}} </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="shortName">
         <mat-header-cell *matHeaderCellDef> Short Name </mat-header-cell>
-        <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.shortName}} </mat-cell>
+        <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.ShortName}} </mat-cell>
       </ng-container>
 
       <mat-header-row *matHeaderRowDef="displayedColumnsDataSourceAuditEntities"></mat-header-row>

@@ -1,11 +1,11 @@
 import { AuditEntityConfiguration } from "./AuditEntityConfiguration";
 
 export class AuditPropertyConfiguration {
-  id: number;
-  name: string;
-  dataType: string;
-  isAuditable: boolean;
-  isComplex: boolean;
-  isCollection: boolean;
-  entity: AuditEntityConfiguration;
+  Id: number;
+  Name: string;
+  DataType: string;
+  IsAuditable: boolean;
+  IsComplex: boolean;
+  IsCollection: boolean;
+  Entity: AuditEntityConfiguration;
 }

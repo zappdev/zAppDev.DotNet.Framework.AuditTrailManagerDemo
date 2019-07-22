@@ -30,19 +30,19 @@ export class AuditConfigurationComponent implements OnInit {
   dataSourceAuditEntities = new MatTableDataSource<AuditEntityConfiguration>();
   dataSourceAuditProperties = new MatTableDataSource<AuditPropertyConfiguration>();
   selection = new SelectionModel<AuditEntityConfiguration>(true, []);
-  displayedColumnsDataSourceAuditEntities = ['select', 'id', 'fullName', 'shortName'];
+  displayedColumnsDataSourceAuditEntities = ['select', 'shortName'];
   displayedColumnsdataSourceAuditProperties = ['id', 'name', 'dataType', 'isAuditable', 'isComplex', 'isCollection'];
 
   constructor(private _auditConfigurationService: AuditConfigService) { }
 
   ngOnInit() {
-    //this._auditConfigurationService.getAuditEntityConfigurations().subscribe(
-    //   (data: any) => {
-    //     this.auditEntities = data.body.value;
-    //     this.dataSourceAuditEntities.data = this.auditEntities;
-    //   }
-    // );
-    this.dataSourceAuditEntities.data = this.auditEntities;
+    this._auditConfigurationService.getAuditEntityConfigurations().subscribe(
+       (data: any) => {
+         this.auditEntities = data.body.value;
+         this.dataSourceAuditEntities.data = this.auditEntities;
+       }
+     );
+    //this.dataSourceAuditEntities.data = this.auditEntities;
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -69,7 +69,7 @@ export class AuditConfigurationComponent implements OnInit {
     if (!row) {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id.toString() + 1}`;
+    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.Id.toString() + 1}`;
   }
 
 }

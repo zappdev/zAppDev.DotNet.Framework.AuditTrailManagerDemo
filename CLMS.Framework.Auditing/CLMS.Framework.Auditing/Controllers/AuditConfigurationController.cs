@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CLMS.Framework.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
 
@@ -13,16 +14,19 @@ namespace CLMS.Framework.Auditing.Controllers
     [ApiController]
     public class AuditConfigurationController : ControllerBase
     {
-        private ISession _session { get; set; }
-        public AuditConfigurationController(ISession session)
-        {
-            _session = session;
-        }
+        public ServiceLocator ServiceLocator { get; }
 
-        [HttpGet("list")]
-        public ActionResult GetAuditEntityConfigurations()
+        public AuditConfigurationController(IServiceProvider serviceProvider)
         {
-            List<Model.AuditEntityConfiguration> auditEntityConfigurations = CLMS.Framework.Auditing.Model.AuditEntityConfiguration.GetAllEntityConfigurations();
+            ServiceLocator = new ServiceLocator(serviceProvider);
+            ServiceLocator.SetLocatorProvider(serviceProvider);
+        }
+        
+        [HttpGet("list")]
+        public IActionResult GetAuditEntityConfigurations()
+        {
+            List<Model.AuditEntityConfiguration> auditEntityConfigurations = 
+                Model.AuditEntityConfiguration.GetAllEntityConfigurations();
             return Ok(new
             {
                 value = auditEntityConfigurations

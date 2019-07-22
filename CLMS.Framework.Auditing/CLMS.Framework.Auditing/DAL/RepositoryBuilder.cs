@@ -57,12 +57,12 @@ namespace CLMS.Framework.Auditing.DAL
 
         public IRetrieveRepository CreateRetrieveRepository(MiniSessionService manager = null)
         {
-            throw new NotImplementedException();
+            return CreateCreateRepository((IMiniSessionService)manager);
         }
 
         public IRetrieveRepository CreateRetrieveRepository(IMiniSessionService manager)
         {
-            throw new NotImplementedException();
+            return CreateCreateRepository(manager);
         }
 
         public IUpdateRepository CreateUpdateRepository(MiniSessionService manager = null)
