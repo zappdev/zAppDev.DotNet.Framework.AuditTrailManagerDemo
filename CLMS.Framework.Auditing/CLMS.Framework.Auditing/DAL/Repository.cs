@@ -5,6 +5,7 @@ using System.Linq.Expressions;
 using NHibernate;
 using CLMS.Framework.Auditing.Model;
 using CLMS.Framework.Data.DAL;
+using NHibernate.Linq;
 
 namespace CLMS.Framework.Auditing.DAL
 {
@@ -48,7 +49,14 @@ namespace CLMS.Framework.Auditing.DAL
         public IQueryable<T> GetAsQueryable<T>(Expression<Func<T, bool>> predicate = null, bool cacheQuery = true)
         {
             var query = GetMainQuery<T>();
-            query.Where(predicate);
+            if (predicate != null)
+            {
+                query = query.Where(predicate);
+            }
+            else
+            {
+                query = query.WithOptions(options => options.SetCacheable(true));
+            }
             return query;
         }
 

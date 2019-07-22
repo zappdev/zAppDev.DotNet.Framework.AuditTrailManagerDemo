@@ -25,7 +25,7 @@ namespace CLMS.Framework.Auditing.DAL
 
         public ICreateRepository CreateCreateRepository(MiniSessionService manager = null)
         {
-            return CreateCreateRepository(manager);
+            return CreateCreateRepository((IMiniSessionService) manager);
         }
 
         public ICreateRepository CreateCreateRepository(IMiniSessionService sessionManager)
