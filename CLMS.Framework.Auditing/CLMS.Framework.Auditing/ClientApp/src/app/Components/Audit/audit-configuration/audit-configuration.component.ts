@@ -36,13 +36,13 @@ export class AuditConfigurationComponent implements OnInit {
   constructor(private _auditConfigurationService: AuditConfigService) { }
 
   ngOnInit() {
-   /* this._auditConfigurationService.getAuditEntityConfigurations().subscribe(
+   this._auditConfigurationService.getAuditEntityConfigurations().subscribe(
       (data: any) => {
         this.auditEntities = data.body.value;
         this.dataSourceAuditEntities.data = this.auditEntities;
       }
-    );*/
-    this.dataSourceAuditEntities.data = this.auditEntities;
+    );
+    //this.dataSourceAuditEntities.data = this.auditEntities;
   }
 
   /** Whether the number of selected elements matches the total number of rows. */

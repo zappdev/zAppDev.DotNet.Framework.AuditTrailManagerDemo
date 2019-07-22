@@ -15,6 +15,7 @@ import { TeamEditComponent } from './Components/Teams/team-edit/team-edit.compon
 import { MatNativeDateModule, MatFormFieldModule, MatListModule, MatTableModule, MatButtonModule, MatDatepickerModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuditConfigurationComponent } from './Components/Audit/audit-configuration/audit-configuration.component';
+import { AuditListComponent } from './Components/Audit/audit-list/audit-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AuditConfigurationComponent } from './Components/Audit/audit-configurat
     TeamComponent,
     TeamAddComponent,
     TeamEditComponent,
-    AuditConfigurationComponent
+    AuditConfigurationComponent,
+    AuditListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -51,6 +53,7 @@ import { AuditConfigurationComponent } from './Components/Audit/audit-configurat
       { path: 'team-add', component: TeamAddComponent, pathMatch: 'full' },
       { path: 'team-edit/:id', component: TeamEditComponent, pathMatch: 'full' },
       { path: 'audit-configuration', component: AuditConfigurationComponent, pathMatch: 'full' },
+      { path: 'audit-list', component: AuditListComponent, pathMatch: 'full' },
     ])
   ],
   providers: [],
