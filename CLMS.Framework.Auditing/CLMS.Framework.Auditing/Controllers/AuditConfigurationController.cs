@@ -25,7 +25,7 @@ namespace CLMS.Framework.Auditing.Controllers
             List<Model.AuditEntityConfiguration> auditEntityConfigurations = CLMS.Framework.Auditing.Model.AuditEntityConfiguration.GetAllEntityConfigurations();
             return Ok(new
             {
-                vale = auditEntityConfigurations
+                value = auditEntityConfigurations
             }); ;
         }
     }
