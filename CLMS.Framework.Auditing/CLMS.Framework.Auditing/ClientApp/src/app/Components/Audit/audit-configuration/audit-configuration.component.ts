@@ -10,7 +10,7 @@ import { AuditPropertyConfiguration } from '../../../Models/Audit/AuditPropertyC
   templateUrl: './audit-configuration.component.html',
   styleUrls: ['./audit-configuration.component.css']
 })
-  @Injectable()
+@Injectable()
 
 export class AuditConfigurationComponent implements OnInit {
 
@@ -26,23 +26,23 @@ export class AuditConfigurationComponent implements OnInit {
       ]
     },
   ];
-  
+
   dataSourceAuditEntities = new MatTableDataSource<AuditEntityConfiguration>();
   dataSourceAuditProperties = new MatTableDataSource<AuditPropertyConfiguration>();
   selection = new SelectionModel<AuditEntityConfiguration>(true, []);
   displayedColumnsDataSourceAuditEntities = ['select', 'id', 'fullName', 'shortName'];
-  displayedColumnsdataSourceAuditProperties = ['id', 'name','dataType', 'isAuditable', 'isComplex','isCollection'];
+  displayedColumnsdataSourceAuditProperties = ['id', 'name', 'dataType', 'isAuditable', 'isComplex', 'isCollection'];
 
   constructor(private _auditConfigurationService: AuditConfigService) { }
 
   ngOnInit() {
-   this._auditConfigurationService.getAuditEntityConfigurations().subscribe(
-      (data: any) => {
-        this.auditEntities = data.body.value;
-        this.dataSourceAuditEntities.data = this.auditEntities;
-      }
-    );
-    //this.dataSourceAuditEntities.data = this.auditEntities;
+    //this._auditConfigurationService.getAuditEntityConfigurations().subscribe(
+    //   (data: any) => {
+    //     this.auditEntities = data.body.value;
+    //     this.dataSourceAuditEntities.data = this.auditEntities;
+    //   }
+    // );
+    this.dataSourceAuditEntities.data = this.auditEntities;
   }
 
   /** Whether the number of selected elements matches the total number of rows. */
@@ -57,6 +57,11 @@ export class AuditConfigurationComponent implements OnInit {
     this.isAllSelected() ?
       this.selection.clear() :
       this.dataSourceAuditEntities.data.forEach(row => this.selection.select(row));
+  }
+
+  onSelect(row: AuditEntityConfiguration) {
+    this.selection.toggle(row);
+    console.log(row);
   }
 
   /** The label for the checkbox on the passed row */
