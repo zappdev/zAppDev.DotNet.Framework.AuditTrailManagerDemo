@@ -20,7 +20,7 @@ export class AuditConfigurationComponent implements OnInit {
   dataSourceAuditProperties = new MatTableDataSource<AuditPropertyConfiguration>();
   selection = new SelectionModel<AuditEntityConfiguration>(true, []);
   displayedColumnsDataSourceAuditEntities = ['select', 'shortName'];
-  displayedColumnsdataSourceAuditProperties = ['id', 'name', 'dataType', 'isAuditable', 'isComplex', 'isCollection'];
+  displayedColumnsdataSourceAuditProperties = ['name', 'dataType', 'isAuditable', 'isComplex', 'isCollection'];
 
   constructor(private _auditConfigurationService: AuditConfigService) { }
 
@@ -48,8 +48,12 @@ export class AuditConfigurationComponent implements OnInit {
   }
 
   onSelect(row: AuditEntityConfiguration) {
-    this.selection.toggle(row);
     console.log(row);
+    this.selection.toggle(row);
+    this.dataSourceAuditProperties.data = [];
+    if(this.selection.isSelected(row)) {
+      this.dataSourceAuditProperties.data = row.Properties;
+    }
   }
 
   /** The label for the checkbox on the passed row */

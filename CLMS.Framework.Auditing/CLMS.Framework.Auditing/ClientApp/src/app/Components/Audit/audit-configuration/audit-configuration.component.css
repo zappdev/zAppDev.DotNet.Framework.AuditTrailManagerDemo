@@ -12,3 +12,7 @@
   hyphens: auto;
 }
 
+
+.table {
+  word-break: break-word;
+}
