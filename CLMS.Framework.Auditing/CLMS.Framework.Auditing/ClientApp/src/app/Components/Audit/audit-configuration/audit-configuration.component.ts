@@ -64,4 +64,7 @@ export class AuditConfigurationComponent implements OnInit {
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.Id.toString() + 1}`;
   }
 
+  saveSettings() {
+    this._auditConfigurationService.saveAuditEntityConfigurations(this.dataSourceAuditEntities.data).subscribe();
+  }
 }

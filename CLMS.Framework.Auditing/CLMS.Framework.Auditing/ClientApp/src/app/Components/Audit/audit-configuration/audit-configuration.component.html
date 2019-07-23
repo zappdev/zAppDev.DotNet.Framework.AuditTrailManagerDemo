@@ -1,5 +1,6 @@
 <div class="row">
   <div class="col-lg-4">
+    <button mat-button color="primary" (click)="saveSettings()">Save Settings</button>
 
     <mat-table [dataSource]="dataSourceAuditEntities" class="mat-elevation-z8 table">
 
@@ -65,7 +66,9 @@
 
       <ng-container matColumnDef="isAuditable">
         <mat-header-cell *matHeaderCellDef> Is Auditable </mat-header-cell>
-        <mat-cell *matCellDef="let auditPropertyConfiguration"> {{auditPropertyConfiguration.IsAuditable}} </mat-cell>
+        <mat-cell *matCellDef="let auditPropertyConfiguration">
+          <mat-checkbox [(ngModel)]="auditPropertyConfiguration.IsAuditable"></mat-checkbox>
+        </mat-cell>
       </ng-container>
 
       <ng-container matColumnDef="isComplex">

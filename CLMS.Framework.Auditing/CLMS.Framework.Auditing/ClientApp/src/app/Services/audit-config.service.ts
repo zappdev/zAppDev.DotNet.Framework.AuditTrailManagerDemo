@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Config } from 'protractor';
+import { AuditEntityConfiguration } from '../Models/Audit/AuditEntityConfiguration';
 
 const httpOptions = {
   headers: new HttpHeaders({
@@ -18,5 +19,9 @@ export class AuditConfigService {
 
   getAuditEntityConfigurations(): Observable<HttpResponse<Config>> {
     return this._httpClient.get<HttpResponse<Config>>('api/AuditConfiguration/list', { observe: 'response' });
+  }
+
+  saveAuditEntityConfigurations(auditEntityConfigurations: AuditEntityConfiguration[]): Observable<AuditEntityConfiguration> {
+    return this._httpClient.post<AuditEntityConfiguration>('api/AuditConfiguration', auditEntityConfigurations, httpOptions);
   }
 }
