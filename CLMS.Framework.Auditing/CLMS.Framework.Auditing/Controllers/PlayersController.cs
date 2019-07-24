@@ -6,6 +6,9 @@ using NHibernate;
 using Microsoft.AspNetCore.Mvc;
 using CLMS.Framework.Auditing.Domain;
 using CLMS.Framework.Auditing.DTOs;
+using CLMS.Framework.Utilities;
+using CLMS.Framework.Data;
+using CLMS.Framework.Data.DAL;
 
 namespace CLMS.Framework.Auditing.Controllers
 {
@@ -13,11 +16,14 @@ namespace CLMS.Framework.Auditing.Controllers
     [ApiController]
     public class PlayersController : ControllerBase
     {
+        public ServiceLocator ServiceLocator { get; }
 
         private ISession _session { get; set; }
-        public PlayersController(ISession session)
+        public PlayersController(ISession session, IServiceProvider serviceProvider)
         {
             _session = session;
+            ServiceLocator = new ServiceLocator(serviceProvider);
+            ServiceLocator.SetLocatorProvider(serviceProvider);
         }
 
         [HttpGet("list")]
@@ -60,8 +66,16 @@ namespace CLMS.Framework.Auditing.Controllers
         [HttpPut("{id}")]
         public ActionResult PutPlayer(long id,Player player)
         {
-            _session.Update(player);
+            var savePlayer = _session.Get<Player>(id);
+
+            savePlayer.DateOfBirth = player.DateOfBirth;
+            savePlayer.FirstName = player.FirstName;
+            savePlayer.LastName = player.LastName;
+            savePlayer.Team = player.Team;
+
+            _session.Update(savePlayer);
             _session.Flush();
+
             return NoContent();
         }
 

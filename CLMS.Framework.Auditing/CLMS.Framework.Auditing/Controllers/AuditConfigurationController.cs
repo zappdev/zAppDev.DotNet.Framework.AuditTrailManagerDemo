@@ -48,6 +48,8 @@ namespace CLMS.Framework.Auditing.Controllers
                 }
                 repo.Save(auditEntity);
             }
+            
+            ServiceLocator.Current.GetInstance<INHAuditTrailManager>().ClearAuditTrailCache();
             return CreatedAtAction("PostAuditEntityConfigurations", auditEntityConfigurations);
         }
     }

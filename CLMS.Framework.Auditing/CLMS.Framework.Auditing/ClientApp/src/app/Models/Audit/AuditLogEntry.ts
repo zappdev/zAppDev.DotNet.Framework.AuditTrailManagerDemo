@@ -1,13 +1,13 @@
 export class AuditLogEntry {
-  id: number;
-  ipAddress: string;
-  entityFullName: string;
-  entityShortName: string;
-  entityId: number;
-  timestamp: string;
-  entyTypeId: string;
-  actionTypeId: string;
-  oldValue: string;
-  newValue: string;
-  propertyName: string;
+  Id: number;
+  IpAddress: string;
+  EntityFullName: string;
+  EntityShortName: string;
+  EntityId: number;
+  Timestamp: string;
+  EntyTypeId: string;
+  ActionTypeId: string;
+  OldValue: string;
+  NewValue: string;
+  PropertyName: string;
 }

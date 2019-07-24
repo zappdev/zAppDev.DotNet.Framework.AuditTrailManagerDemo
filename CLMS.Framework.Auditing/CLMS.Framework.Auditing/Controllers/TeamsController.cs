@@ -6,6 +6,7 @@ using NHibernate;
 using Microsoft.AspNetCore.Mvc;
 using CLMS.Framework.Auditing.Domain;
 using CLMS.Framework.Auditing.DTOs;
+using CLMS.Framework.Utilities;
 
 namespace CLMS.Framework.Auditing.Controllers
 {
@@ -13,10 +14,14 @@ namespace CLMS.Framework.Auditing.Controllers
     [ApiController]
     public class TeamsController : ControllerBase
     {
+        public ServiceLocator ServiceLocator { get; }
+
         private ISession _session { get; set; }
-        public TeamsController(ISession session)
+        public TeamsController(ISession session, IServiceProvider serviceProvider)
         {
             _session = session;
+            ServiceLocator = new ServiceLocator(serviceProvider);
+            ServiceLocator.SetLocatorProvider(serviceProvider);
         }
 
         [HttpGet("list")]

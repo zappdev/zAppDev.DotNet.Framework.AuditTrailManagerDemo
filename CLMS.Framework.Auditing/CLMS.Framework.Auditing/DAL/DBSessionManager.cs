@@ -4,6 +4,7 @@ using FluentNHibernate.Cfg.Db;
 using Microsoft.Extensions.Configuration;
 using NHibernate;
 using NHibernate.Cfg;
+using NHibernate.Event;
 using NHibernate.Tool.hbm2ddl;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,7 @@ namespace CLMS.Framework.Auditing.DAL
                 })
                 .ExposeConfiguration(cfg =>
                 {
+                    RegisterListeners(cfg);
                     var up = new SchemaUpdate(cfg);
                     UpdateDatabaseSchema(cfg, connectionString);
                 })
@@ -47,6 +49,34 @@ namespace CLMS.Framework.Auditing.DAL
                 updateCode.AppendLine(row);
                 updateCode.AppendLine();
             }, true);
+        }
+
+        public static void RegisterListeners(NHibernate.Cfg.Configuration cfg)
+        {
+            cfg.EventListeners.DeleteEventListeners = new IDeleteEventListener[]
+            {
+                new NHibernate.Event.Default.DefaultDeleteEventListener()
+            };
+            cfg.EventListeners.SaveOrUpdateEventListeners = new ISaveOrUpdateEventListener[]
+            {
+                new NHibernate.Event.Default.DefaultSaveOrUpdateEventListener()
+            };
+            cfg.EventListeners.PostInsertEventListeners = new IPostInsertEventListener[]
+            {
+                new NHAuditTrailListener()
+            };
+            cfg.EventListeners.PostUpdateEventListeners = new IPostUpdateEventListener[]
+            {
+                new NHAuditTrailListener()
+            };
+            cfg.EventListeners.PostDeleteEventListeners = new IPostDeleteEventListener[]
+            {
+                new NHAuditTrailListener()
+            };
+            cfg.EventListeners.PreCollectionUpdateEventListeners = new IPreCollectionUpdateEventListener[]
+            {
+                new NHAuditTrailListener()
+            };
         }
     }
 }
