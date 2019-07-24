@@ -26,8 +26,10 @@ namespace CLMS.Framework.Auditing.Controllers
         [HttpGet("list")]
         public IActionResult GetAuditEntityConfigurations()
         {
-            List<Model.AuditEntityConfiguration> auditEntityConfigurations = 
-                Model.AuditEntityConfiguration.GetAllEntityConfigurations();
+            var repo = ServiceLocator.Current.GetInstance<IRepositoryBuilder>().CreateCreateRepository();
+
+            List<Model.AuditEntityConfiguration> auditEntityConfigurations =
+                repo.GetAll<Model.AuditEntityConfiguration>().ToList();
             return Ok(new
             {
                 value = auditEntityConfigurations

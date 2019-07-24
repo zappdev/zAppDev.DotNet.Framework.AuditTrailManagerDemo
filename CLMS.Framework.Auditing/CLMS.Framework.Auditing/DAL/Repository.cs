@@ -18,6 +18,17 @@ namespace CLMS.Framework.Auditing.DAL
             _session = session;
         }
 
+        public void DeleteAuditEntityConfiguration(AuditEntityConfiguration auditentityconfiguration, bool doNotCallDeleteForThis = false, bool isCascaded = false, object calledBy = null)
+        {
+            if (auditentityconfiguration == null || auditentityconfiguration.IsTransient()) return;
+            foreach (var toDelete in auditentityconfiguration.Properties)
+            {
+                auditentityconfiguration.RemoveProperties(toDelete);
+                DeleteAuditPropertyConfiguration(toDelete, false, isCascaded);
+            }
+            if (!doNotCallDeleteForThis) _session.Delete(auditentityconfiguration);
+        }
+
         public void DeleteAuditPropertyConfiguration(AuditPropertyConfiguration propertyConfiguration, bool doNotCallDeleteForThis = false, bool isCascaded = false, object calledBy = null)
         {
             if (propertyConfiguration == null || propertyConfiguration.IsTransient()) return;
@@ -27,7 +38,7 @@ namespace CLMS.Framework.Auditing.DAL
 
         public List<T> Get<T>(Expression<Func<T, bool>> predicate, bool cacheQuery = true) 
         {
-            var list = GetAsQueryable<T>(predicate, cacheQuery).ToList();
+            var list = GetAsQueryable(predicate, cacheQuery).ToList();
             return list;
         }
 
@@ -85,7 +96,7 @@ namespace CLMS.Framework.Auditing.DAL
         {
             if (entity == null)
             {
-                throw new ArgumentNullException(nameof(entity), "No " + typeof(T).Name + " was specified.");
+                throw new ArgumentNullException(nameof(entity), $"No {typeof(T).Name} was specified.");
             }
             _session.SaveOrUpdate(entity);
             _session.Flush();
