@@ -20,6 +20,7 @@
     "@angular/forms": "6.1.10",
     "@angular/http": "6.1.10",
     "@angular/material": "6.4.7",
+    "@angular/material-moment-adapter": "6.4.7",
     "@angular/platform-browser": "6.1.10",
     "@angular/platform-browser-dynamic": "6.1.10",
     "@angular/platform-server": "6.1.10",
@@ -29,7 +30,7 @@
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
     "jquery": "^3.4.1",
-    "popper.js": "^1.14.3",
+    "moment": "2.24.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },

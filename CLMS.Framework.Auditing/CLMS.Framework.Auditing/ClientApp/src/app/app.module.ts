@@ -13,6 +13,7 @@ import { TeamComponent } from './Components/Teams/team/team.component';
 import { TeamAddComponent } from './Components/Teams/team-add/team-add.component';
 import { TeamEditComponent } from './Components/Teams/team-edit/team-edit.component';
 import { MatNativeDateModule, MatFormFieldModule, MatListModule, MatTableModule, MatButtonModule, MatDatepickerModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
+import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuditConfigurationComponent } from './Components/Audit/audit-configuration/audit-configuration.component';
 import { AuditListComponent } from './Components/Audit/audit-list/audit-list.component';
@@ -43,6 +44,7 @@ import { AuditListComponent } from './Components/Audit/audit-list/audit-list.com
     MatNativeDateModule,
     MatSelectModule,
     MatCheckboxModule,
+    MatMomentDateModule,
     BrowserAnimationsModule,
     RouterModule.forRoot([
       { path: '', component: PlayerComponent, pathMatch: 'full' },
@@ -56,7 +58,9 @@ import { AuditListComponent } from './Components/Audit/audit-list/audit-list.com
       { path: 'audit-list', component: AuditListComponent, pathMatch: 'full' },
     ])
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
