@@ -12,7 +12,7 @@ import { PlayerEditComponent } from './Components/Players/player-edit/player-edi
 import { TeamComponent } from './Components/Teams/team/team.component';
 import { TeamAddComponent } from './Components/Teams/team-add/team-add.component';
 import { TeamEditComponent } from './Components/Teams/team-edit/team-edit.component';
-import { MatNativeDateModule, MatFormFieldModule, MatListModule, MatTableModule, MatButtonModule, MatDatepickerModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
+import { MatNativeDateModule, MatFormFieldModule, MatListModule, MatCardModule, MatTableModule, MatIconModule, MatInputModule, MatButtonModule, MatDatepickerModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuditConfigurationComponent } from './Components/Audit/audit-configuration/audit-configuration.component';
@@ -41,7 +41,10 @@ import { AuditListComponent } from './Components/Audit/audit-list/audit-list.com
     MatTableModule,
     MatButtonModule,
     MatDatepickerModule,
+    MatCardModule,
+    MatInputModule,
     MatNativeDateModule,
+    MatIconModule,
     MatSelectModule,
     MatCheckboxModule,
     MatMomentDateModule,
