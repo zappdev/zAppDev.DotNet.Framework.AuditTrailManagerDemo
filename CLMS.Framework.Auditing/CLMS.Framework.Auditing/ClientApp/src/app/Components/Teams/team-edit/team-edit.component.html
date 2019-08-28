@@ -1,19 +1,19 @@
-<div class="row">
-  <div class="col-lg-6" *ngIf="team">
-    <div class="row">
-      <label>
-        First Name:
-        <input [(ngModel)]="team.name" placeholder="Name" />
-      </label>
-    </div>
-    <div class="row">
-      <label>
-        Founded:
-        <input matInput [(ngModel)]="team.founded" placeholder="Founded">
-      </label>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <button (click)="onSave()">Save</button>
+<div class="fab-container">
+  <button mat-fab color="primary" (click)="onSave()">
+    <mat-icon aria-hidden="false" aria-label="Save">save</mat-icon>
+  </button>
+
+  <mat-card *ngIf="team">
+    <mat-card-content>
+      <div class="example-container">
+        <mat-form-field>
+          <input matInput [(ngModel)]="team.name" placeholder="Name">
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [(ngModel)]="team.founded" placeholder="Founded">
+        </mat-form-field>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
 </div>
