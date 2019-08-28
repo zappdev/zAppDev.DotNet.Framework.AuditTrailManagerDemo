@@ -22,6 +22,7 @@ const moment = _moment;
 })
 export class PlayerEditComponent implements OnInit {
 
+  add: boolean;
   player: Player;
   teams: Team[];
 
@@ -29,13 +30,20 @@ export class PlayerEditComponent implements OnInit {
 
   ngOnInit() {
     this.getTeams();
-    let id = this._router.snapshot.paramMap.get('id');
-    this._playerService.getPlayer(id)
-      .subscribe(
-        data => { this.player = data; },
-        err => console.error(err),
-        () => { console.log(this.player); }
-    );
+
+    let path = this._router.routeConfig.path;
+    if (path === 'player-add') {
+      this.add = true;
+      this.player = new Player();
+    } else {
+      let id = this._router.snapshot.paramMap.get('id');
+      this._playerService.getPlayer(id)
+        .subscribe(
+          data => { this.player = data; },
+          err => console.error(err),
+          () => { console.log(this.player); }
+        );
+    }
   }
 
   getTeams() {
@@ -49,10 +57,16 @@ export class PlayerEditComponent implements OnInit {
   }
 
   onSave() {
-    this._playerService.editPlayer(this.player)
-      .subscribe(
+    if (this.add) {
+      this._playerService.addPlayer(this.player).subscribe(
         () => { this._location.back(); }
       );
+    } else {
+      this._playerService.editPlayer(this.player)
+        .subscribe(
+          () => { this._location.back(); }
+        );
+    }
   }
 
   trackTeam(x: Team, y: Team) {

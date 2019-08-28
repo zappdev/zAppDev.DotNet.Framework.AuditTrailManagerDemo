@@ -52,10 +52,10 @@ import { AuditListComponent } from './Components/Audit/audit-list/audit-list.com
     RouterModule.forRoot([
       { path: '', component: PlayerComponent, pathMatch: 'full' },
       { path: 'players', component: PlayerComponent, pathMatch: 'full' },
-      { path: 'player-add', component: PlayerAddComponent, pathMatch: 'full' },
+      { path: 'player-add', component: PlayerEditComponent, pathMatch: 'full' },
       { path: 'player-edit/:id', component: PlayerEditComponent, pathMatch: 'full' },
       { path: 'teams', component: TeamComponent, pathMatch: 'full' },
-      { path: 'team-add', component: TeamAddComponent, pathMatch: 'full' },
+      { path: 'team-add', component: TeamEditComponent, pathMatch: 'full' },
       { path: 'team-edit/:id', component: TeamEditComponent, pathMatch: 'full' },
       { path: 'audit-configuration', component: AuditConfigurationComponent, pathMatch: 'full' },
       { path: 'audit-list', component: AuditListComponent, pathMatch: 'full' },

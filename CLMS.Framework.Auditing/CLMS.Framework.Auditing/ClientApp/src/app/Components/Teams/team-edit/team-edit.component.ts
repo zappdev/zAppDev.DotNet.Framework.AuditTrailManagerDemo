@@ -12,25 +12,38 @@ import { Team } from '../../../Models/Team';
   @Injectable()
 export class TeamEditComponent implements OnInit {
 
+  add: boolean;
   team: Team;
 
   constructor(private _router: ActivatedRoute, private _teamService: TeamService, private _location: Location) { }
 
   ngOnInit() {
-    let id = this._router.snapshot.paramMap.get('id');
-    this._teamService.getTeam(id)
-      .subscribe(
-        data => { this.team = data; },
-        err => console.error(err),
-        () => { console.log(this.team); }
-      );
+
+    let path = this._router.routeConfig.path;
+    if (path === 'team-add') {
+      this.add = true;
+      this.team = new Team();
+    } else {
+      let id = this._router.snapshot.paramMap.get('id');
+      this._teamService.getTeam(id)
+        .subscribe(
+          data => { this.team = data; },
+          err => console.error(err),
+          () => { console.log(this.team); }
+        );
+    }
   }
 
   onSave() {
-    this._teamService.editTeam(this.team)
-      .subscribe(
+    if (this.add) {
+      this._teamService.addTeam(this.team).subscribe(
         () => { this._location.back(); }
       );
+    } else {
+      this._teamService.editTeam(this.team)
+        .subscribe(
+          () => { this._location.back(); }
+        );
+    }
   }
-
 }
