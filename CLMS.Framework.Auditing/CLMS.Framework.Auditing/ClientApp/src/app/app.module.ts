@@ -7,10 +7,8 @@ import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { PlayerComponent } from './Components/Players/player/player.component';
-import { PlayerAddComponent } from './Components/Players/player-add/player-add.component';
 import { PlayerEditComponent } from './Components/Players/player-edit/player-edit.component';
 import { TeamComponent } from './Components/Teams/team/team.component';
-import { TeamAddComponent } from './Components/Teams/team-add/team-add.component';
 import { TeamEditComponent } from './Components/Teams/team-edit/team-edit.component';
 import { MatNativeDateModule, MatFormFieldModule, MatListModule, MatCardModule, MatTableModule, MatIconModule, MatInputModule, MatButtonModule, MatDatepickerModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
@@ -24,10 +22,8 @@ import { AuditListComponent } from './Components/Audit/audit-list/audit-list.com
     NavMenuComponent,
     HomeComponent,
     PlayerComponent,
-    PlayerAddComponent,
     PlayerEditComponent,
     TeamComponent,
-    TeamAddComponent,
     TeamEditComponent,
     AuditConfigurationComponent,
     AuditListComponent
