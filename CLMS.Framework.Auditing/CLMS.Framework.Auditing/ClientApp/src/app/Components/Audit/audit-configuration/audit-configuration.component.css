@@ -16,3 +16,13 @@
 .table {
   word-break: break-word;
 }
+
+.mat-fab {
+  position: relative;
+  left: 97%;
+  top: 30px;
+}
+
+.fab-container {
+  margin-top: 45px;
+}

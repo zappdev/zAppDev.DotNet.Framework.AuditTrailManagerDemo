@@ -1,88 +1,34 @@
-<div class="row">
-  <div class="col-lg-4">
-    <button mat-button color="primary" (click)="saveSettings()">Save Settings</button>
+<div class="fab-container">
 
-    <mat-table [dataSource]="dataSourceAuditEntities" class="mat-elevation-z8 table">
+  <mat-table [dataSource]="dataSourceAuditEntities" class="mat-elevation-z8">
 
-      <!-- Checkbox Column -->
-      <ng-container matColumnDef="select">
-        <mat-header-cell *matHeaderCellDef>
-          <mat-checkbox class = "tp-margin"
-                        (change)="$event ? masterToggle() : null"
-                        [checked]="selection.hasValue() && isAllSelected()"
-                        [indeterminate]="selection.hasValue() && !isAllSelected()"
-                        [aria-label]="checkboxLabel()">
-          </mat-checkbox>
-        </mat-header-cell>
-        <mat-cell *matCellDef="let row">
-          <mat-checkbox class = "tp-margin"
-                        (click)="$event.stopPropagation()"
-                        (change)="$event ? onSelect(row) : null"
-                        [checked]="selection.isSelected(row)"
-                        [aria-label]="checkboxLabel(row)">
-          </mat-checkbox>
-        </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.Id}} </mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-        <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.Id}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="fullName">
+      <mat-header-cell *matHeaderCellDef> Full Name </mat-header-cell>
+      <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.FullName}} </mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="fullName">
-        <mat-header-cell *matHeaderCellDef> Full Name </mat-header-cell>
-        <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.FullName}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="shortName">
+      <mat-header-cell *matHeaderCellDef> Short Name </mat-header-cell>
+      <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.ShortName}} </mat-cell>
+    </ng-container>
 
-      <ng-container matColumnDef="shortName">
-        <mat-header-cell *matHeaderCellDef> Short Name </mat-header-cell>
-        <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.ShortName}} </mat-cell>
-      </ng-container>
+    <ng-container matColumnDef="properties">
+      <mat-header-cell *matHeaderCellDef> Properties</mat-header-cell>
+      <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.Properties.length}} </mat-cell>
+    </ng-container>
 
-      <mat-header-row *matHeaderRowDef="displayedColumnsDataSourceAuditEntities"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumnsDataSourceAuditEntities;"
-               (click)="onSelect(row)"></mat-row>
-    </mat-table>
-  </div>
+    <ng-container matColumnDef="auditable">
+      <mat-header-cell *matHeaderCellDef> Auditables</mat-header-cell>
+      <mat-cell *matCellDef="let auditEntityConfiguration"> {{auditEntityConfiguration.Auditable}} </mat-cell>
+    </ng-container>
 
-  <div class="col-lg-8">
+    <mat-header-row *matHeaderRowDef="displayedColumnsDataSourceAuditEntities"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumnsDataSourceAuditEntities;" (click)="onSelect(row)"></mat-row>
 
-    <mat-table [dataSource]="dataSourceAuditProperties" class="mat-elevation-z8 table">
-
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
-        <mat-cell *matCellDef="let auditPropertyConfiguration"> {{auditPropertyConfiguration.Id}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-        <mat-cell *matCellDef="let auditPropertyConfiguration"> {{auditPropertyConfiguration.Name}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="dataType">
-        <mat-header-cell *matHeaderCellDef> Data Type </mat-header-cell>
-        <mat-cell *matCellDef="let auditPropertyConfiguration"> {{auditPropertyConfiguration.DataType}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="isAuditable">
-        <mat-header-cell *matHeaderCellDef> Is Auditable </mat-header-cell>
-        <mat-cell *matCellDef="let auditPropertyConfiguration">
-          <mat-checkbox [(ngModel)]="auditPropertyConfiguration.IsAuditable"></mat-checkbox>
-        </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="isComplex">
-        <mat-header-cell *matHeaderCellDef> Is complex </mat-header-cell>
-        <mat-cell *matCellDef="let auditPropertyConfiguration"> {{auditPropertyConfiguration.IsComplex}} </mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="isCollection">
-        <mat-header-cell *matHeaderCellDef> Is Collection </mat-header-cell>
-        <mat-cell *matCellDef="let auditPropertyConfiguration"> {{auditPropertyConfiguration.IsCollection}} </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumnsdataSourceAuditProperties"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumnsdataSourceAuditProperties;"></mat-row>
-    </mat-table>
-  </div>
+  </mat-table>
 </div>

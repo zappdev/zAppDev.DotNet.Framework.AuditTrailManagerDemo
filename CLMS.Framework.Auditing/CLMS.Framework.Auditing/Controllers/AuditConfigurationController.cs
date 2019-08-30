@@ -36,6 +36,19 @@ namespace CLMS.Framework.Auditing.Controllers
             });
         }
 
+        [HttpGet("{id}")]
+        public IActionResult GetAuditEntityConfiguration(int id)
+        {
+            var repo = ServiceLocator.Current.GetInstance<IRepositoryBuilder>().CreateCreateRepository();
+
+            var auditEntityConfiguration =
+                repo.GetById<Model.AuditEntityConfiguration>(id, false);
+            return Ok(new
+            {
+                value = auditEntityConfiguration
+            });
+        }
+
         [HttpPost]
         public ActionResult<List<Model.AuditEntityConfiguration>> PostAuditEntityConfigurations(List<Model.AuditEntityConfiguration> auditEntityConfigurations)
         {

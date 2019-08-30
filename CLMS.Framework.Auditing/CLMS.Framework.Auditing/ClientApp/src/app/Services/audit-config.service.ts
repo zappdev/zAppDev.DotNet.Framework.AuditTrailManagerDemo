@@ -21,6 +21,10 @@ export class AuditConfigService {
     return this._httpClient.get<HttpResponse<Config>>('api/AuditConfiguration/list', { observe: 'response' });
   }
 
+  getAuditEntityConfiguration(id: string): Observable<HttpResponse<Config>> {
+    return this._httpClient.get<HttpResponse<Config>>(`api/AuditConfiguration/${id}`, { observe: 'response' });
+  }
+
   saveAuditEntityConfigurations(auditEntityConfigurations: AuditEntityConfiguration[]): Observable<AuditEntityConfiguration> {
     return this._httpClient.post<AuditEntityConfiguration>('api/AuditConfiguration', auditEntityConfigurations, httpOptions);
   }

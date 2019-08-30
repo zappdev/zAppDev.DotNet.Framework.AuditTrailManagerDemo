@@ -4,6 +4,8 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuditConfigService } from '../../../Services/audit-config.service';
 import { AuditPropertyConfiguration } from '../../../Models/Audit/AuditPropertyConfiguration';
+import { forEach } from '@angular/router/src/utils/collection';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-audit-configuration',
@@ -19,16 +21,19 @@ export class AuditConfigurationComponent implements OnInit {
   dataSourceAuditEntities = new MatTableDataSource<AuditEntityConfiguration>();
   dataSourceAuditProperties = new MatTableDataSource<AuditPropertyConfiguration>();
   selection = new SelectionModel<AuditEntityConfiguration>(true, []);
-  displayedColumnsDataSourceAuditEntities = ['select', 'shortName'];
+  displayedColumnsDataSourceAuditEntities = ['shortName', 'fullName', 'properties', 'auditable'];
   displayedColumnsdataSourceAuditProperties = ['name', 'dataType', 'isAuditable', 'isComplex', 'isCollection'];
 
-  constructor(private _auditConfigurationService: AuditConfigService) { }
+  constructor(private _auditConfigurationService: AuditConfigService, private _router: Router) { }
 
   ngOnInit() {
     this._auditConfigurationService.getAuditEntityConfigurations().subscribe(
        (data: any) => {
-         this.auditEntities = data.body.value;
-         this.dataSourceAuditEntities.data = this.auditEntities;
+          this.auditEntities = data.body.value;
+          this.dataSourceAuditEntities.data = this.auditEntities;
+          this.auditEntities.forEach(row => {
+            row.Auditable = row.Properties.filter(a => a.IsAuditable).length;
+          });
        }
      );
   }
@@ -48,12 +53,7 @@ export class AuditConfigurationComponent implements OnInit {
   }
 
   onSelect(row: AuditEntityConfiguration) {
-    console.log(row);
-    this.selection.toggle(row);
-    this.dataSourceAuditProperties.data = [];
-    if(this.selection.isSelected(row)) {
-      this.dataSourceAuditProperties.data = row.Properties;
-    }
+    this._router.navigate(['/audit-property', row.Id]);
   }
 
   /** The label for the checkbox on the passed row */

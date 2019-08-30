@@ -1,0 +1,45 @@
+<div class="fab-container">
+
+  <button mat-fab color="primary" (click)="saveSettings()">
+    <mat-icon aria-hidden="false" aria-label="Save">save</mat-icon>
+  </button>
+
+
+  <mat-table [dataSource]="dataSourceAuditProperties" class="mat-elevation-z8 table">
+
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+      <mat-cell *matCellDef="let auditPropertyConfiguration"> {{auditPropertyConfiguration.Id}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let auditPropertyConfiguration"> {{auditPropertyConfiguration.Name}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="dataType">
+      <mat-header-cell *matHeaderCellDef> Data Type </mat-header-cell>
+      <mat-cell *matCellDef="let auditPropertyConfiguration"> {{auditPropertyConfiguration.DataType}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isAuditable">
+      <mat-header-cell *matHeaderCellDef> Is Auditable </mat-header-cell>
+      <mat-cell *matCellDef="let auditPropertyConfiguration">
+        <mat-checkbox [(ngModel)]="auditPropertyConfiguration.IsAuditable"></mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isComplex">
+      <mat-header-cell *matHeaderCellDef> Is complex </mat-header-cell>
+      <mat-cell *matCellDef="let auditPropertyConfiguration"> {{auditPropertyConfiguration.IsComplex}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="isCollection">
+      <mat-header-cell *matHeaderCellDef> Is Collection </mat-header-cell>
+      <mat-cell *matCellDef="let auditPropertyConfiguration"> {{auditPropertyConfiguration.IsCollection}} </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumnsdataSourceAuditProperties"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumnsdataSourceAuditProperties;"></mat-row>
+  </mat-table>
+</div>

@@ -14,7 +14,7 @@ import { AuditListService } from '../../../Services/audit-list.service';
 export class AuditListComponent implements OnInit {
 
   auditLogEntries = new MatTableDataSource<AuditLogEntry>();
-  displayedColumns = ['id', 'ipAddress', 'entityFullName', 'entityShortName', 'entityId', 'timestamp', 'entyTypeId', 'actionTypeId', 'oldValue', 'newValue', 'propertyName'];
+  displayedColumns = ['id', 'entityShortName', 'entityId', 'timestamp', 'entyTypeId', 'actionTypeId', 'oldValue', 'newValue', 'propertyName'];
 
   constructor(private _auditListService: AuditListService) { }
 

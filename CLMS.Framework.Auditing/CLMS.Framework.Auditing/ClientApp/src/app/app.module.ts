@@ -10,11 +10,13 @@ import { PlayerComponent } from './Components/Players/player/player.component';
 import { PlayerEditComponent } from './Components/Players/player-edit/player-edit.component';
 import { TeamComponent } from './Components/Teams/team/team.component';
 import { TeamEditComponent } from './Components/Teams/team-edit/team-edit.component';
-import { MatNativeDateModule, MatFormFieldModule, MatListModule, MatCardModule, MatTableModule, MatIconModule, MatInputModule, MatButtonModule, MatDatepickerModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
+import { MatNativeDateModule, MatGridListModule, MatFormFieldModule, MatListModule, MatCardModule, MatTableModule, MatIconModule, MatInputModule, MatButtonModule, MatDatepickerModule, MatSelectModule, MatCheckboxModule } from '@angular/material';
 import { MatMomentDateModule, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuditConfigurationComponent } from './Components/Audit/audit-configuration/audit-configuration.component';
 import { AuditListComponent } from './Components/Audit/audit-list/audit-list.component';
+import { AuditPropertyConfigurationComponent } from './Components/Audit/audit-property-configuration/audit-property-configuration.component';
+import { AuditPropertyConfiguration } from './Models/Audit/AuditPropertyConfiguration';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { AuditListComponent } from './Components/Audit/audit-list/audit-list.com
     TeamComponent,
     TeamEditComponent,
     AuditConfigurationComponent,
-    AuditListComponent
+    AuditListComponent,
+    AuditPropertyConfigurationComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -40,6 +43,7 @@ import { AuditListComponent } from './Components/Audit/audit-list/audit-list.com
     MatCardModule,
     MatInputModule,
     MatNativeDateModule,
+    MatGridListModule,
     MatIconModule,
     MatSelectModule,
     MatCheckboxModule,
@@ -54,6 +58,7 @@ import { AuditListComponent } from './Components/Audit/audit-list/audit-list.com
       { path: 'team-add', component: TeamEditComponent, pathMatch: 'full' },
       { path: 'team-edit/:id', component: TeamEditComponent, pathMatch: 'full' },
       { path: 'audit-configuration', component: AuditConfigurationComponent, pathMatch: 'full' },
+      { path: 'audit-property/:id', component: AuditPropertyConfigurationComponent, pathMatch: 'full' },
       { path: 'audit-list', component: AuditListComponent, pathMatch: 'full' },
     ])
   ],

@@ -5,4 +5,5 @@ export class AuditEntityConfiguration {
   FullName: string;
   ShortName: string;
   Properties: AuditPropertyConfiguration[];
+  Auditable: number;
 }

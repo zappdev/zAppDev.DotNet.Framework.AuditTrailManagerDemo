@@ -23,7 +23,7 @@
 
     <ng-container matColumnDef="dateOfBirth">
       <mat-header-cell *matHeaderCellDef> Date of Birth </mat-header-cell>
-      <mat-cell *matCellDef="let player"> {{player.dateOfBirth}} </mat-cell>
+      <mat-cell *matCellDef="let player"> {{player.dateOfBirth | date}} </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="actions">
