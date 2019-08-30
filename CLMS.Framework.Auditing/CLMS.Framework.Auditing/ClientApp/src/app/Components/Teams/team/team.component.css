@@ -7,3 +7,7 @@
 .fab-container {
   margin-top: -25px;
 }
+
+.mat-row {
+  cursor: pointer;
+}

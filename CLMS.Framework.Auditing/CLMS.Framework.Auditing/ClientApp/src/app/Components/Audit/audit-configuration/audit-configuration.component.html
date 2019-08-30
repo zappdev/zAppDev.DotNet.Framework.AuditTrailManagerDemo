@@ -1,3 +1,4 @@
+<h3>Configuration</h3>
 <div class="fab-container">
 
   <mat-table [dataSource]="dataSourceAuditEntities" class="mat-elevation-z8">
@@ -28,7 +29,7 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumnsDataSourceAuditEntities"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumnsDataSourceAuditEntities;" (click)="onSelect(row)"></mat-row>
+    <mat-row  *matRowDef="let row; columns: displayedColumnsDataSourceAuditEntities;" (click)="onSelect(row)"></mat-row>
 
   </mat-table>
 </div>
