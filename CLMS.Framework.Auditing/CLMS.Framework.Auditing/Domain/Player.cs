@@ -1,10 +1,10 @@
-﻿using CLMS.Framework.Auditing.DAL;
+﻿using zAppDev.DotNet.Framework.Auditing.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CLMS.Framework.Auditing.Domain
+namespace zAppDev.DotNet.Framework.Auditing.Domain
 {
     public class Player : IAuditable
     {

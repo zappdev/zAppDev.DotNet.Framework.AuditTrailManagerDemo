@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace CLMS.Framework.Auditing
+namespace zAppDev.DotNet.Framework.Auditing
 {
     public class Program
     {

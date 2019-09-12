@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using NHibernate;
-using CLMS.Framework.Auditing.Model;
-using CLMS.Framework.Data.DAL;
+using zAppDev.DotNet.Framework.Auditing.Model;
+using zAppDev.DotNet.Framework.Data.DAL;
 using NHibernate.Linq;
 
-namespace CLMS.Framework.Auditing.DAL
+namespace zAppDev.DotNet.Framework.Auditing.DAL
 {
     public class Repository : ICreateRepository, IAuditingRepository
     {

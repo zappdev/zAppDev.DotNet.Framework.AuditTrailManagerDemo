@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
 
-namespace CLMS.Framework.Auditing.Controllers
+namespace zAppDev.DotNet.Framework.Auditing.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

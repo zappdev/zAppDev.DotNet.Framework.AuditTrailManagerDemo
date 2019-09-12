@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CLMS.Framework.Auditing.DAL
+namespace zAppDev.DotNet.Framework.Auditing.DAL
 {
     public interface IAuditable
     {

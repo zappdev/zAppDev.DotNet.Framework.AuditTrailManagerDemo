@@ -1,11 +1,11 @@
-﻿using CLMS.Framework.Data;
-using CLMS.Framework.Data.DAL;
-using CLMS.Framework.Identity;
-using CLMS.Framework.Workflow;
+﻿using zAppDev.DotNet.Framework.Data;
+using zAppDev.DotNet.Framework.Data.DAL;
+using zAppDev.DotNet.Framework.Identity;
+using zAppDev.DotNet.Framework.Workflow;
 using NHibernate;
 using System;
 
-namespace CLMS.Framework.Auditing.DAL
+namespace zAppDev.DotNet.Framework.Auditing.DAL
 {
     public class RepositoryBuilder : IRepositoryBuilder
     {

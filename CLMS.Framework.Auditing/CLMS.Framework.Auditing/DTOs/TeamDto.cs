@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CLMS.Framework.Auditing.DTOs
+namespace zAppDev.DotNet.Framework.Auditing.DTOs
 {
     public class TeamDto
     {

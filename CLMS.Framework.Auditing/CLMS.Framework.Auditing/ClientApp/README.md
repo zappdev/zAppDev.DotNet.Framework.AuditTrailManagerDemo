@@ -1,4 +1,4 @@
-# CLMS.Framework.Auditing
+# zAppDev.DotNet.Framework.Auditing
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0.
 

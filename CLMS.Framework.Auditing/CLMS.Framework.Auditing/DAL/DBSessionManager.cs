@@ -1,17 +1,12 @@
-﻿using CLMS.Framework.Data;
+﻿using zAppDev.DotNet.Framework.Data;
 using FluentNHibernate.Cfg;
 using FluentNHibernate.Cfg.Db;
-using Microsoft.Extensions.Configuration;
 using NHibernate;
-using NHibernate.Cfg;
 using NHibernate.Event;
 using NHibernate.Tool.hbm2ddl;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using zAppDev.DotNet.Framework.Auditing;
 
-namespace CLMS.Framework.Auditing.DAL
+namespace zAppDev.DotNet.Framework.Auditing.DAL
 {
     public class DBSessionManager
     {

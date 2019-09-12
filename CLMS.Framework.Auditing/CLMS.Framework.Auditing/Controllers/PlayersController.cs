@@ -4,13 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using NHibernate;
 using Microsoft.AspNetCore.Mvc;
-using CLMS.Framework.Auditing.Domain;
-using CLMS.Framework.Auditing.DTOs;
-using CLMS.Framework.Utilities;
-using CLMS.Framework.Data;
-using CLMS.Framework.Data.DAL;
+using zAppDev.DotNet.Framework.Auditing.Domain;
+using zAppDev.DotNet.Framework.Auditing.DTOs;
+using zAppDev.DotNet.Framework.Utilities;
+using zAppDev.DotNet.Framework.Data;
+using zAppDev.DotNet.Framework.Data.DAL;
 
-namespace CLMS.Framework.Auditing.Controllers
+namespace zAppDev.DotNet.Framework.Auditing.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

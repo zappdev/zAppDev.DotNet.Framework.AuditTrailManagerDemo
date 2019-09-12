@@ -1,6 +1,6 @@
-using CLMS.Framework.Auditing.DAL;
-using CLMS.Framework.Data.DAL;
-using CLMS.Framework.Utilities;
+using zAppDev.DotNet.Framework.Auditing.DAL;
+using zAppDev.DotNet.Framework.Data.DAL;
+using zAppDev.DotNet.Framework.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -13,7 +13,7 @@ using Newtonsoft.Json.Serialization;
 using NHibernate;
 using System.Linq;
 
-namespace CLMS.Framework.Auditing
+namespace zAppDev.DotNet.Framework.Auditing
 {
     public class Startup
     {

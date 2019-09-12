@@ -1,11 +1,11 @@
 {
-  "name": "CLMS.Framework.Auditing",
+  "name": "zAppDev.DotNet.Framework.Auditing",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "build:ssr": "ng run CLMS.Framework.Auditing:server:dev",
+    "build:ssr": "ng run zAppDev.DotNet.Framework.Auditing:server:dev",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

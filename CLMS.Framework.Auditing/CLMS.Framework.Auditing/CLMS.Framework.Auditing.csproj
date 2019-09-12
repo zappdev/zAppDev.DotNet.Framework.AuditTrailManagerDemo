@@ -37,10 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\CLMS.Framework\src\CLMS.Framework\CLMS.Framework.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\Models\Audit\AuditEntityConfiguration.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Models\Audit\AuditLogEntry.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\Models\Audit\AuditPropertyConfiguration.ts" />
@@ -50,6 +46,10 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\Components\Audit\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\zAppDev.DotNet.Framework\src\zAppDev.DotNet.Framework\zAppDev.DotNet.Framework.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

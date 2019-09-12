@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using CLMS.Framework.Data.DAL;
-using CLMS.Framework.Utilities;
+using zAppDev.DotNet.Framework.Data.DAL;
+using zAppDev.DotNet.Framework.Utilities;
 using Microsoft.AspNetCore.Mvc;
 using NHibernate;
 
 
 
-namespace CLMS.Framework.Auditing.Controllers
+namespace zAppDev.DotNet.Framework.Auditing.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
