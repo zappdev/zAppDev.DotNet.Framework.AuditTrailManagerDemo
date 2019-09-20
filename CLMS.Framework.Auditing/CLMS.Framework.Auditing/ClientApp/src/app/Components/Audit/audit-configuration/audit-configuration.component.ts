@@ -4,7 +4,6 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatTableDataSource } from '@angular/material/table';
 import { AuditConfigService } from '../../../Services/audit-config.service';
 import { AuditPropertyConfiguration } from '../../../Models/Audit/AuditPropertyConfiguration';
-import { forEach } from '@angular/router/src/utils/collection';
 import { Router } from '@angular/router';
 
 @Component({
