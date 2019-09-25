@@ -18,7 +18,8 @@
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.CodeAnalysis.Common" Version="2.10.0" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
-    <PackageReference Include="NHibernate" Version="5.2.5" />
+    <PackageReference Include="NHibernate" Version="5.1.3" />
+    <PackageReference Include="zAppDev.DotNet.Framework" Version="7.0.2" />
   </ItemGroup>
 
   <ItemGroup>
@@ -46,10 +47,6 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\src\app\Components\Audit\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\zAppDev.DotNet.Framework\src\zAppDev.DotNet.Framework\zAppDev.DotNet.Framework.csproj" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
