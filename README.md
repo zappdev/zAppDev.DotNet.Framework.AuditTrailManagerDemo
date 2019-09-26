@@ -1,4 +1,4 @@
-# zAppDev Framework AuditTrailManager
+# zAppDev Framework AuditTrailManagerDemo
 
 ## How to
 
@@ -43,4 +43,4 @@ This walkthrough tutorial will show how to use the zAppDev Framework AuditTrailM
 
 ## License
 
-The **zAppDev.DotNet.Framework.AuditTrailManager** is licensed as AGPL software.
+The **zAppDev.DotNet.Framework.AuditTrailManagerDemo** is licensed as AGPL software.
